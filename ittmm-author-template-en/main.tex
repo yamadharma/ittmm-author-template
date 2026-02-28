@@ -586,6 +586,24 @@ This section has a special environment:
 \end{conflictsofinterest}
 \end{minted}
 
+\subsection{Declaration on Generative AI}
+
+Either:\\
+\emph{The author(s) have not employed any Generative AI tools.}\\
+or: \\
+\emph{During the preparation of this work, the author(s) used X-GPT-4 and Gramby in order to: Grammar
+and spelling check. Further, the author(s) used X-AI-IMG for figures 3 and 4 in order to: Generate
+images. After using these tool(s)/service(s), the author(s) reviewed and edited the content as
+needed and take(s) full responsibility for the publication’s content.}
+
+This section has a special environment:
+\begin{minted}{latex}
+\begin{aideclaration}
+...
+\end{aideclaration}
+\end{minted}
+
+
 \subsection{Acknowledgments}
 
 Identification of funding sources and other support, and thanks to individuals and groups that assisted in the research and the preparation of the work should be included in an acknowledgment section, which is placed just before the reference section in your document.
@@ -663,9 +681,103 @@ latexmk -C
 \section{Resources}
 
 \begin{itemize}
-\item Overleaf: \url{https://www.overleaf.com/read/vjvjpsqrqjhj#86e97e}.
-\item Overleaf (russian): \url{https://www.overleaf.com/read/yjmkpnvgqzdk#bf8ccf}.
+\item GitHub: \url{https://github.com/yamadharma/ittmm-author-template}.
+\item GitVerse: \url{https://gitverse.ru/dharma/ittmm-author-template}.
 \end{itemize}
+
+\section{\TeX{}Live distribution}
+
+While latex is a fairly stable application, the same cannot always be attributed to specific \LaTeX{} distributions.
+We suggest using the \TeX{}Live distribution.
+\TeX{}Live is the most complete distribution of \LaTeX{} supported by the \TeX{} community.
+It supports a large number of operating systems.
+It has been in development since 1996.
+It was based on the te\TeX{} distribution.
+MacTeX is a variant of the \TeX{}Live distribution for macOS.
+\TeX{}Live is a distribution with continuous updates as part of an annual version of the distribution.
+The main page of the \TeX{}Live distribution is \url{https://www.tug.org/texlive/}.
+The \TeX{}Live distribution is the basis for the Overleaf online service.
+
+The \TeX{}Live distribution contains all the necessary packages, programs, fonts.
+
+It is recommended to use the lualatex format to compile documents.
+
+\subsection{Installing \TeX{}Live with the package manager}
+
+For Linux-based systems, use the standard installation methods via the distribution's package manager.
+For Windows, use the Chocolatey package manager (\url{https://chocolatey.org/}):
+\begin{minted}{shell}
+choco install texlive
+\end{minted}
+
+\subsection{Manual \TeX{}Live installation}
+
+Let's describe the process of on-premise installing the \TeX{}Live distribution.
+After launching, the installer will allow you to choose the installation scheme, i.e. specify a number of settings and select the desired packages.
+The installer can work both in command line mode and display a graphical interface.
+
+To download the installer, go to \href{https://www.tug.org/texlive/}{\TeX{}Live official site} and under \emph{Ways to acquire TeX Live} click on the link \href{https://www.tug.org/texlive/acquire-netinstall.html}{download}.
+The links on the site are to mirrors.
+The mirror is selected automatically.
+A page will open where you can download archives for all supported operating systems.
+\begin{itemize}
+  \item For Windows, a self-extracting archive
+    \mintinline{latex}{install-tl-windows.exe}
+    is provided and at the time of writing this guide it is available at the \href{https://mirror.ctan.org/systems/texlive/tlnet/install-tl-windows.exe}{link}.
+    Alternatively, you can download a regular
+    \mintinline{latex}{zip}
+    archive \href{https://mirror.ctan.org/systems/texlive/tlnet/install-tl.zip}{install-tl.zip} with the same files and unzip it yourself.
+  \item For Unix-like operating systems, the archive is called
+    \mintinline{latex}{install-tl-unx.tar.gz}
+    and is available at \href{https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz}{this address}.
+\end{itemize}
+
+\subsection{Installation process of \TeX{}Live for GNU/Linux}
+
+Download the installer (\url{https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz}):
+ \begin{minted}{shell}
+    cd /tmp/
+    wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+\end{minted}
+
+Unzip the downloaded file:
+\begin{minted}{shell}
+tar xzvf install-tl-unx.tar.gz
+\end{minted}
+
+Go to the unzipped directory and run the installer:
+\begin{minted}{shell}
+    cd install-tl-[0-9]*
+    sudo ./install-tl
+\end{minted}
+
+The installer runs in text mode and allows you to customize the installation settings.
+
+The default settings assume that all distribution files are installed in the
+\mintinline{shell}{/usr/local/}
+directory and therefore require root privileges when running the installation.
+
+It is recommended to create links to executable files in the
+\mintinline{shell}{/usr/local/bin}
+directory.
+
+To do this, select the \texttt{O} option in the console version of the utility and then \texttt{L}.
+
+To return to the previous menu, use \texttt{R}.
+
+If you do not have superuser rights, you can install to any other directory, in particular the one in the user's home directory.
+To change the directory, perform the following steps in order:
+\begin{itemize}
+  \item press the \texttt{D} key and then \texttt{Enter} to confirm;
+  \item will open a new menu where we will enter \texttt{1} and press \texttt{Enter} to confirm;
+  \item now enter the path to the main installation directory:
+    \mintinline{shell}{~/texlive/2025}
+    and press \texttt{Enter};
+  \item and then type in \texttt{R} and press \texttt{Enter}.
+\end{itemize}
+
+Next, type \texttt{I} and press \texttt{Enter}.
+This will start the installation, which will take a long time.
 
 \end{document}
 
