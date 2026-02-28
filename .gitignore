@@ -120,6 +120,7 @@
 
 # minted
 *.pyg
+_minted/
 
 # morewrites
 *.mw
